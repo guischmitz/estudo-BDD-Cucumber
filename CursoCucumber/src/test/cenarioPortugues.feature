@@ -11,4 +11,9 @@ Funcionalidade: Como um aluno
   Cenário: Contador
     Dado que o valor do contator é 12
     Quando eu somar 3
-    Então o valor do contador deve ser 18
+    Então o valor do contador deve ser 15
+
+  Cenário: Calcular atraso na entrega
+    Dado que a entrega deve ser realizada em 20/07/2023
+    Quando atrasar em 2 dias
+    Então a entrega deverá ser feita em 22/07/2023
