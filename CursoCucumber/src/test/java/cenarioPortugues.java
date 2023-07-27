@@ -30,7 +30,6 @@ public class cenarioPortugues {
     public void queOValorDoContator(int int1) {
         contador = int1;
     }
-
     @Quando("eu somar {int}")
     public void euSomar(int int1) {
         contador = contador + int1;
@@ -42,7 +41,6 @@ public class cenarioPortugues {
         System.out.println(int1);
         Assert.assertEquals(int1, contador);
     }
-
     Date entrega = new Date();
     @Dado("que a entrega deve ser realizada em {int}\\/{int}\\/{int}")
     public void queAEntregaDeveSerRealizadaEm(int dia, int mes, int ano) {
@@ -51,15 +49,20 @@ public class cenarioPortugues {
         entrega = cal.getTime();
     }
     @Quando("atrasar em {int} dias")
-    public void atrasarEmDias(int dia) {
+    public void atrasarEmDias(int dias) {
         Calendar cal = Calendar.getInstance();
         cal.setTime(entrega);
-        cal.add(Calendar.DAY_OF_MONTH, dia);
+        cal.add(Calendar.DAY_OF_MONTH, dias);
         entrega = cal.getTime();
     }
-
+    @Quando("atrasar em {int} meses")
+    public void atrasarEmMeses(int mes){
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(entrega);
+        cal.add(Calendar.MONTH, mes);
+        entrega = cal.getTime();
+    }
     Date entregaFinal = new Date();
-
     @Então("a entrega deverá ser feita em {int}\\/{int}\\/{int}")
     public void aEntregaDeveráSerFeitaEm(int dia, int mes, int ano) {
         DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
@@ -71,7 +74,6 @@ public class cenarioPortugues {
         System.out.println(entregaFormatada);
         System.out.println(entregaFinalFormatada);
         Assert.assertEquals(entregaFormatada,entregaFinalFormatada);
-
     }
 
 }
